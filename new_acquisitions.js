@@ -1,3 +1,14 @@
+// Customize request
+var customParams = {
+	desiredAmount: 4, /* (int) max amount of final records you want to receive */
+	timespan: '30', /* (string) looks for records inserted in Primo during the last XX days. accepted values are 7, 30, or 90 */
+	primoBaseUrl: 'http://usi-primo-test.hosted.exlibrisgroup.com',
+	primoInstitution: 'ARC',
+	queryTerm: 'arc',
+	sortField: 'scdate',
+	bulkSize: '100' /* (string) amount of records to retrieve from primo to check against bookcovers existence */
+};
+
 // get interface language
 function isEng() {
   return ($("body").hasClass("EXLCurrentLang_en_US")) ? true : false;
@@ -10,11 +21,8 @@ $(function() {
 });
 
 // call the php interface to retrieve 4 new acquisitions
-$.ajax(
-{
-	type: "POST",
-	url: "/files/scripts/new-arrivals/arrival-interface.php",
-	success: function(data) {
+$.post("/files/scripts/new-arrivals/arrival-interface.php", customParams,
+    function(data){
 		$(".loader").hide();
 		var obj = JSON.parse(data);
 		var pretty = JSON.stringify(obj, null, 2);
@@ -40,5 +48,6 @@ $.ajax(
 		}
 		// show the updated new books
 		$(".newacquisition").show();
-	}
+}).fail(function(){
+      console.log("error");
 });

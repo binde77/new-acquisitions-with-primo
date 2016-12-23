@@ -8,7 +8,14 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/files/scripts/new-arrivals/Cover.php'
 class Arrival
 {
 
-	private static $primoQuery = 'http://usi-primo-test.hosted.exlibrisgroup.com/PrimoWebServices/xservice/search/brief?institution=ARC&query=any,contains,arc&query=facet_newrecords,exact,30+days+back&sortField=scdate&onCampus=false&indx=1&bulkSize=100&json=true';
+	private static $primoQuery;
+	private static $desiredAmount;
+
+	function __construct($query, $amount)
+	{
+		self::$primoQuery = $query;
+		self::$desiredAmount = $amount;
+	}
 
 	private static $languageIta = array(
 		"ita" => "italiano",
@@ -70,7 +77,7 @@ class Arrival
 		foreach ($newBooksFromPrimo as $primoValues):
 
 			// if we already have enough books, exit the loop
-			if (count($booksWithCover) == 4) {
+			if (count($booksWithCover) == self::$desiredAmount) {
 				break;
 			}
 
