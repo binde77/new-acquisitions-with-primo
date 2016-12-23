@@ -3,6 +3,7 @@
 ## Requirements
 * Calls to exernal APIs are made using [Httpful](http://phphttpclient.com/) "a simple, chainable PHP library intended to make speaking HTTP painless and interacting with REST APIs a breeze"
 * jQuery
+* your server IP is registered in the appropriate mapping table in Primo backoffice
   
   
   
