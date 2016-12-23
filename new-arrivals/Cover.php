@@ -47,7 +47,6 @@ class Cover
 
 	public function askGoogleBooks()
 	{
-		// APIkey : AIzaSyBLjzV81R6JhSi4DP9BnTASuERUbma7XuY
 		$uri = 'https://www.googleapis.com/books/v1/volumes?q=isbn:' . self::$isbn;
 		$response = \Httpful\Request::get($uri)->send();
 		return $response;
