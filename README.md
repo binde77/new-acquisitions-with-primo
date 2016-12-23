@@ -31,8 +31,3 @@ var customParams = {
 
 ## TODO
 * optimize code to speed the process up
-* create customizable parameters in the Javascript file
-  * timespan to search for new acquisitions (7, 30 or 90 days)
-  * Primo base URL
-  * Primo institution
-  * Records' sort order (stitle - performs Title sort / scdate - performs a date sort in descending order / scdate2 - performs a date sort in ascending order / screator - performs an author sort / popularity - performs a popularity sort. 
