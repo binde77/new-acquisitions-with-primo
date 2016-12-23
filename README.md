@@ -14,6 +14,21 @@ the Javascript file new_acquisitions.js calls the server via AJAX. The call goes
 The Arrival class (new-arrivals/Arrival.php) used by the interface is responsible for calling the XService provided by Primo ([documented here](https://developers.exlibrisgroup.com/primo/apis/webservices/xservices/search/briefsearch)). It processes the results and then looks for book covers using the Cover class (new-arrivals/Cover.php), which in turn uses the book's ISBN to query OpenLibrary and Google Books. If a covers is found the cover's URL is passed to Arrival. An array of books including bibliographic data, the cover URL and Primo's record permalink is transferred back to the interface.
 
 
+## Customization
+The new_acquisitions.js file begins with an object of customizable parameters:
+```javascript
+var customParams = {
+	desiredAmount: 4, /* (int) max amount of final records you want to receive */
+	timespan: '30', /* (string) looks for records inserted in Primo during the last XX days. accepted values are 7, 30, or 90 */
+	primoBaseUrl: 'http://usi-primo-test.hosted.exlibrisgroup.com',
+	primoInstitution: 'ARC',
+	queryTerm: 'arc',
+	sortField: 'scdate', /* accepted avalues are 'stitle' (performs Title sort), 'scdate' (performs a date sort in descending order), 'scdate2' (performs a date sort in ascending order), 'screator' (performs an author sort), 'popularity' (performs a popularity sort) */
+	bulkSize: '100' /* (string) amount of records to retrieve from primo to check for book covers */
+};
+```
+
+
 ## TODO
 * optimize code to speed the process up
 * create customizable parameters in the Javascript file
