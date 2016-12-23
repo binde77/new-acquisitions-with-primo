@@ -1,9 +1,10 @@
 # new-acquisitions-with-primo
 
 ## Requirements
-* Calls to exernal APIs are made using [Httpful](http://phphttpclient.com/) "a simple, chainable PHP library intended to make speaking HTTP painless and interacting with REST APIs a breeze"
+* [Httpful](http://phphttpclient.com/): "a simple, chainable PHP library intended to make speaking HTTP painless and interacting with REST APIs a breeze"
 * jQuery
-* your server IP is registered in the appropriate mapping table in Primo backoffice
+* IP of the server where the PHP files live is registered in the appropriate mapping table in Primo backoffice
+* you have facet_newrecords enabled for your Primo institution
   
   
   

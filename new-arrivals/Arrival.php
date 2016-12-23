@@ -59,10 +59,6 @@ class Arrival
 	public function getPrimoResults()
 	{
 		$json = json_decode(file_get_contents(self::$primoQuery), TRUE);
-		$jsonIterator = new RecursiveIteratorIterator(
-    		new RecursiveArrayIterator($json),
-    		RecursiveIteratorIterator::SELF_FIRST);
-		// return $jsonIterator;
 		json_decode(json_encode($json), true);
 		return $json["SEGMENTS"]["JAGROOT"]["RESULT"]["DOCSET"]["DOC"];
 	}
